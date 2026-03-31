@@ -1,6 +1,6 @@
 # import detect, detect_langs, langDetectException and TypedDict
 from typing import TypedDict
-from langdetect import detect, detect_langs  # type: ignore
+from langdetect import detect, detect_langs, DetectorFactory  # type: ignore
 from langdetect.lang_detect_exception import LangDetectException  # type: ignore
 
 
@@ -18,6 +18,8 @@ def analyze_text(text: str) -> AnalysisResult:
     
     language: str
     confidence: str
+    
+    DetectorFactory.seed = 0
     
     try:
         language = detect(text)  # type: ignore
